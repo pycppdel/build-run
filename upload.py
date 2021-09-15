@@ -2,6 +2,7 @@ import os
 import time
 import keyboard
 import threading
+import pyautogui
 
 """Auto upload for linux"""
 
@@ -12,11 +13,14 @@ with open(filename, "r") as f:
 
     token = f.read()
 
+pyautogui.write("HEHE")
+
 class OP(threading.Thread):
     ended = False
 
     def run(self):
         os.system("git pull")
+        pyautogui.write("GUGDFGZDGSGD")
         os.system("git add .")
         os.system("git commit -m autosave")
         os.system("git push")
