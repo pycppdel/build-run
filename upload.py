@@ -13,7 +13,6 @@ with open(filename, "r") as f:
 
     token = f.read()
 
-pyautogui.write("HEHE")
 
 class OP(threading.Thread):
     ended = False
