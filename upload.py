@@ -1,6 +1,7 @@
 import os
 import time
 import keyboard
+import threading
 
 """Auto upload for linux"""
 
@@ -11,16 +12,31 @@ with open(filename, "r") as f:
 
     token = f.read()
 
+class OP(threading.Thread):
+    ended = False
 
-#starting operation
-os.system("git pull")
-os.system("git add .")
-os.system("git commit -m autosave")
-os.system("git push")
-time.sleep(1)
-print(token)
-keyboard.write(username)
-keyboard.press("enter")
-time.sleep(1)
-keyboard.write(token)
-keyboard.press("enter")
+    def run(self):
+        os.system("git pull")
+        os.system("git add .")
+        os.system("git commit -m autosave")
+        os.system("git push")
+        OP.ended = True
+
+class KB(threading.Thread):
+
+    def run(self):
+        while not OP.ended:
+            pass
+        print(token)
+
+
+
+
+op = OP()
+kb = KB()
+
+op.start()
+kb.start()
+
+op.join()
+kb.join()
