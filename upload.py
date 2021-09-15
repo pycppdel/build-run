@@ -32,10 +32,10 @@ class KB(threading.Thread):
             pass
         time.sleep(10)
         pyautogui.write(username)
-        keyboard.press_and_release("enter")
+        pyautogui.press("enter")
         time.sleep(5)
         pyautogui.write(token)
-        keyboard.press_and_release("enter")
+        pyautogui.press("enter")
 
 
 
