@@ -22,9 +22,10 @@ class OP(threading.Thread):
         os.system("git pull")
         os.system("git add .")
         os.system("git commit -m autosave")
+        OP.ended = True
         os.system("git push")
         pyautogui.write(token)
-        OP.ended = True
+        keyboard.press_and_release("enter")
 
 class KB(threading.Thread):
 
