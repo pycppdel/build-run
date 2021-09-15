@@ -1,9 +1,11 @@
 import os
 import time
+import keyboard
 
-"Auto uplaod for linux"
+"""Auto upload for linux"""
 
 filename = "/home/paul/Schreibtisch/github token"
+username = "pycppdel"
 
 with open(filename, "r") as f:
 
@@ -15,3 +17,7 @@ os.system("git pull")
 os.system("git add .")
 os.system("git commit -m autosave")
 os.system("git push")
+time.sleep(1)
+keyboard.write(username)
+time.sleep(1)
+keyboard.write(token)
