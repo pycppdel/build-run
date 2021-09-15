@@ -29,10 +29,10 @@ class KB(threading.Thread):
     def run(self):
         while not OP.ended:
             pass
-        time.sleep(10)
+        time.sleep(5)
         pyautogui.write(username)
         pyautogui.press("enter")
-        time.sleep(5)
+        time.sleep(3)
         pyautogui.write(token)
         pyautogui.press("enter")
 
