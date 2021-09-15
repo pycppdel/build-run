@@ -24,15 +24,14 @@ class OP(threading.Thread):
         os.system("git commit -m autosave")
         OP.ended = True
         os.system("git push")
-        pyautogui.write(token)
-        keyboard.press_and_release("enter")
 
 class KB(threading.Thread):
 
     def run(self):
         while not OP.ended:
             pass
-        print(token)
+        pyautogui.write(token)
+        keyboard.press_and_release("enter")
 
 
 
