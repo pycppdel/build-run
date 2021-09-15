@@ -20,10 +20,10 @@ class OP(threading.Thread):
 
     def run(self):
         os.system("git pull")
-        pyautogui.write("GUGDFGZDGSGD")
         os.system("git add .")
         os.system("git commit -m autosave")
         os.system("git push")
+        pyautogui.write(token)
         OP.ended = True
 
 class KB(threading.Thread):
