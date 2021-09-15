@@ -1,0 +1,18 @@
+The folder Document posseses all information needed to understand build&run.
+
+All abstract concepts or Methods used are listed in PROPS(proposals).
+
+This PROP(PROP_001) provides a list of all PROPS in order.
+
+------------------------------------------
+|                 PROPS:                 |
+------------------------------------------
+|PROP_001| Contains a list of all PROPS  |
+------------------------------------------
+------------------------------------------
+|PROP_002| Describes the structure of    |
+|        | build&run, like hirarchy      |
+------------------------------------------
+------------------------------------------
+|                                        |
+------------------------------------------
