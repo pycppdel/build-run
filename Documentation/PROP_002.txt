@@ -1,0 +1,15 @@
+
+The structure of build&run will be described in here
+
+Layout:
+
+
+build&run: Folder with all contents, terminal program etc.
+|
+|-Documentation
+|
+|
+|
+|
+|
+|
