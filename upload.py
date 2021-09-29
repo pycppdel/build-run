@@ -6,7 +6,7 @@ import pyautogui
 
 """Auto upload for linux"""
 
-filename = "/home/paul/Schreibtisch/github token"
+filename = "/home/paul/Schreibtisch/Icons/github token"
 username = "pycppdel"
 
 with open(filename, "r") as f:
