@@ -19,3 +19,6 @@
     .engine                               --[As found in Engines.txt]--
 
     .fps                                  declares the preferred fps
+
+    .icon                                 the icon of your game as .png or .jpg
+    .titel                                the titel of your game
