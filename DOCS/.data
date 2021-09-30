@@ -1,0 +1,34 @@
+
+
+
+
+
+    -------------------------------------
+    |             .data                 |
+    -------------------------------------
+
+      inside this section the used data can be declared.
+
+      The used variables can also be used in the main .code section or
+      <.CODE> files.
+
+      Types:
+
+      byte    : stores a byte
+      int     : integer
+      short   : short integer
+      long    : long integer
+      float   : float
+      double  : double
+      string  : string
+
+      Image             : An Image to be displayed on screen
+      Object            : Base class for all Objects. Used for collision detection.
+
+      GravityObject     : Can only be used if gravity engine is activated
+      GravityBlock      : Block to jump on usw.
+
+      Player            : can only be declared once. The main player
+
+      Enemy             : Base class for all enemys
+      
