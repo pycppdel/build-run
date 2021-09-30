@@ -17,4 +17,3 @@
     .screenheight                         INT
 
     .engine                               --[As found in Engines.txt]--
-    

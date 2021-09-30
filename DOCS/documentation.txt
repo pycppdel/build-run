@@ -18,9 +18,7 @@ Contents of a .plain file:
 |                        | -> Section .code:
 |                        |                  Section for the code
 |                        |
-|                        | -> Section .style:
-|                        |                  Section for changing the style/engine of your built game
-|                        |                  This Section can only be opened once, if it was to be reopened your program will not compile
+|                        |
 |                        |
 |                        |
 --------------------------
