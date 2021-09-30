@@ -140,9 +140,22 @@ class Compiler:
 
         #starting validation
 
-        not_missing_section = (self.config_line is None or self.code_line is None)
+        missing_section = (self.config_line is None or self.code_line is None)
+        #checks if the sections are in invalid order
+        invalid_order = (self.code_line < self.config_line)
 
-        if not not_missing_section:
+        #adding if data was detected
+        if self.data_line is not None:
+            invalid_order = (invalid_order or self.data_line < self.config_line)
+
+        if self.include_line is not None:
+            invalid_order = (invalid_order or self.code_line < self.include_line\
+                             or self.config_line < self.include_line)
+
+        if self.data_line is not None and self.include_line is not None:
+            invalid_order = (invalid_order or self.data_line < self.include_line)
+
+        if missing_section or invalid_order:
             #section is missing
             return False
 
