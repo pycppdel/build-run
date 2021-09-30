@@ -6,6 +6,9 @@ script written in the simple language Plain.
 Contents of a .plain file:
 
 --------------------------
+|                        | -> Section .include:
+|                        |                     Sectiond for include libraries of the game, other files or just simple configuration data
+|                        |
 |                        | -> Section .config:
 |                        |                     Section for configuration data needed for your Project
 |                        |
@@ -35,10 +38,31 @@ A Lot of stuff needs to be coordinated inside the game engine, therefore
 there are libraries to deal with them.
 
 
-     LIBRARIES
-    -----------
+        LIBRARIES
+       -----------
 
  (.)Engine
  (.)Compiler
  (.)ExeMaker
- (.)
+
+    STANDARD_LIBRARIES
+   --------------------
+
+ (.)Save
+ (.)KeyInput
+ (.)MouseInput
+ (.)Events
+ (.)Image
+ (.)Objects
+ (.)GravityObjects
+ (.)Music
+ (.)Fullscreen
+ (.)Algorithms #algorithms for gravity usw.
+ (.)UserAlgorithms #algorithms the user can use in his program
+
+Including the libraries that are not initially loaded needs to be done in the .include Section
+
+
+Syntax:
+
+.include "PATH" || <NameOfLibrary>
