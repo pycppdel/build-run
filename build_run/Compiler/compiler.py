@@ -139,7 +139,14 @@ class Compiler:
         #all lines have beend located
 
         #starting validation
-        return False
+
+        not_missing_section = (self.config_line is None or self.code_line is None)
+
+        if not not_missing_section:
+            #section is missing
+            return False
+
+        return True
 
 
         """
