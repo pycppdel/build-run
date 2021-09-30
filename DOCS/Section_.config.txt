@@ -1,2 +1,20 @@
-With opening this Section,
-a way opens to configure behind-the-scenes configuration
+
+
+    -------------------------------------
+    |             .config               |
+    -------------------------------------
+
+    In this Section, all the configuration details need to be specified.
+
+    Configuration Possible:
+
+    .background                           "PATH"  || ["p1", "p2", "p3", usw.] || "COLOR"
+    .autoscroll                           on/off || true/false
+    .permanentscroll                      on/off || true/false
+
+    .fullscreen                           on/off || true/false
+    .screenwidth                          INT
+    .screenheight                         INT
+
+    .engine                               --[As found in Engines.txt]--
+    
