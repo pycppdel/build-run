@@ -1,0 +1,15 @@
+
+
+The style section opens a way to declare multiple used engines.
+
+|||Usable Engines|||
+
+---------------------
+|                   | -> Engine for just using a blank screen, which you can fill with pixels, sprites, usw.
+|  Blankscreen      |
+|                   |
+---------------------
+|                   |
+|  Jump_And_Run     | -> Engine for coding an Jump_and_run Application
+|                   |
+---------------------

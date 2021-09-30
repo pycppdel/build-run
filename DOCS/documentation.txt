@@ -1,0 +1,44 @@
+Documentation about build & run.
+
+Build & run provides an engine as well as an compiler, which can interpret a
+script written in the simple language Plain.
+
+Contents of a .plain file:
+
+--------------------------
+|                        | -> Section .config:
+|                        |                     Section for configuration data needed for your Project
+|                        |
+|                        | -> Section .data // optional:
+|                        |                    Section for declaring all variables needed
+|                        |
+|                        | -> Section .code:
+|                        |                  Section for the code
+|                        |
+|                        | -> Section .style:
+|                        |                  Section for changing the style/engine of your built game
+|                        |                  This Section can only be opened once, if it was to be reopened your program will not compile
+|                        |
+|                        |
+--------------------------
+
+Interaction in between Sections like configuring .config stuff of the game in the .code Section
+is not supported, can be achieved however by opening up the needed Section
+by typing:
+
+Section .[NAME]
+ //stuff
+Section end
+
+
+A Lot of stuff needs to be coordinated inside the game engine, therefore
+there are libraries to deal with them.
+
+
+     LIBRARIES
+    -----------
+
+ (.)Engine
+ (.)Compiler
+ (.)ExeMaker
+ (.)
