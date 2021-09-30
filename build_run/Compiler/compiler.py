@@ -73,7 +73,7 @@ class Compiler:
 
         Section Order:
 
-        1: .include
+        1: .include //optional
         2: .config
         3: .data //optional
         4: .code
