@@ -5,7 +5,7 @@ Pythonizer Class.
 #importing os and sys
 import os
 import sys
-#import from higher files
+#getting exceptions
 from exceptions import (PathNotFoundError, IsNoPlainFile,\
 SectionsNotProperlySet)
 
