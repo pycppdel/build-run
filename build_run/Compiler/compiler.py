@@ -4,7 +4,7 @@ Pythonizer Class.
 """
 
 #imports
-from build_run.exceptions import (PathNotFoundError)
+from ..exceptions import (PathNotFoundError)
 
 import re
 
