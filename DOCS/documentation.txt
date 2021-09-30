@@ -53,6 +53,7 @@ there are libraries to deal with them.
  (.)MouseInput
  (.)Events
  (.)Image
+ (.)Time #for delaying execution or simple time functions
  (.)Objects
  (.)GravityObjects
  (.)Music
@@ -66,3 +67,24 @@ Including the libraries that are not initially loaded needs to be done in the .i
 Syntax:
 
 .include "PATH" || <NameOfLibrary>
+
+
+Construction of the Project:
+
+Build&run
+|
+|
+|
+|-Engine
+| |
+| |xxx
+|
+|-Compiler
+| |
+| |xxx
+|
+|-Libraries
+| |
+| |-xxx
+|
+|xxx
