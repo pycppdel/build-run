@@ -1,2 +1,2 @@
 #!/bin/bash
-python3 upload.py
+python3 /home/paul/Projects/build-run/upload.py
