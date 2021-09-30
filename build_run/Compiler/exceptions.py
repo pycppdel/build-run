@@ -27,3 +27,15 @@ class IsNoPlainFile(Exception):
     def __str__(self):
         #returns the error message
         return ("The Path "+self.path+" is no plain file.")
+
+class SectionsNotProperlySet(Exception):
+
+    """
+    Exceptions for invalid headers
+    """
+    def __init__(self, path):
+        self.path = path
+
+    def __str__(self):
+        #returns the error message
+        return ("The Path "+self.path+" contains a invalid Section structure.")

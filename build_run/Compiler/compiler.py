@@ -6,7 +6,8 @@ Pythonizer Class.
 import os
 import sys
 #import from higher files
-from exceptions import (PathNotFoundError, IsNoPlainFile)
+from exceptions import (PathNotFoundError, IsNoPlainFile,\
+SectionsNotProperlySet)
 
 import re
 
@@ -40,13 +41,28 @@ class Compiler:
             #ready to be caught by Pythonizer
             raise PathNotFoundError(self.filepath)
 
-        #path does exist -> going on
+        #checking for valid naming aka .plain
+        if not self.filepath.endswith(".plain"):
+            #does not end
+            raise IsNoPlainFile(self.filepath)
+
+        #path does exist and is .plain -> going on
         #opening file and reading data
         self.file = open(self.filepath, "r")
+
         #saving read
+        self.filecode = self.file.read()
+        #seeking back
+        self.file.seek(0)
+        #getting lines
+        self.filecode_lines = [el.strip() for el in self.file.readlines()]
+        #seeking back
+        self.file.seek(0)
 
         #checking if the sections are loaded and located in the right way
-        self.sectioncheck()
+        if not self.sectioncheck():
+            #Sections are not properly set
+            raise SectionsNotProperlySet(self.filepath)
 
         #finally: closing file
         self.file.close()
@@ -59,9 +75,79 @@ class Compiler:
 
         1: .include
         2: .config
-        3: .data
+        3: .data //optional
         4: .code
         """
-        pass
+
+        #generating regex patterns for checking existance and right order
+
+        include_pattern = r"\s*\.include\s*$"
+        config_pattern = r"\s*\.config\s*$"
+        data_pattern = r"\s*\.data\s*$"
+        code_pattern = r"\s*\.code\s*$"
+
+        #line counter for the found line
+        self.include_line = None
+        self.config_line = None
+        self.data_line = None
+        self.code_line = None
+
+        #counter for lines
+        linecounter = 0
+
+
+        #starting finding process
+        #iterating over all lines
+        for el in self.filecode_lines:
+
+            #checking everything
+            if self.include_line is None:
+
+                if re.search(include_pattern, el):
+
+                    #found
+                    self.include_line = linecounter
+
+
+
+            if self.config_line is None:
+
+                if re.search(config_pattern, el):
+
+                    #found
+                    self.config_line = linecounter
+
+            if self.data_line is None:
+
+                if re.search(data_pattern, el):
+
+                    #found
+                    self.data_line = linecounter
+
+
+            if self.code_line is None:
+
+                if re.search(code_pattern, el):
+
+                    #found
+                    self.code_line = linecounter
+
+
+
+            linecounter += 1
+
+        #all lines have beend located
+
+        #starting validation
+        return False
+
+
+        """
+        TODO: checking validation for files that were included
+        """
+
+
+
+
 
 Compiler(sys.argv[1]).compile()
