@@ -36,23 +36,25 @@ A Lot of stuff needs to be coordinated inside the game engine, therefore
 there are libraries to deal with them.
 
 
+LIBRARIES with a +(.) are included from the beginning of the file
+
         LIBRARIES
        -----------
 
- (.)Engine
- (.)Compiler
- (.)ExeMaker
+ +(.)Engine
+ +(.)Compiler
+ +(.)ExeMaker
 
     STANDARD_LIBRARIES
    --------------------
 
  (.)Save
- (.)KeyInput
- (.)MouseInput
- (.)Events
- (.)Image
+ +(.)KeyboardInput
+ +(.)MouseInput
+ +(.)Events
+ +(.)Image
  (.)Time #for delaying execution or simple time functions
- (.)Objects
+ +(.)Objects
  (.)GravityObjects
  (.)Music
  (.)Fullscreen
@@ -92,9 +94,9 @@ First, the compiler checks the file for any spelling errors and generates an AST
 
 
 It redeclares definitions and reinterprets them in program code, which will be stored in a dictionary of all needed Data,
-that will be passed to the MakeExe operator.
+that will be passed to the Pythonizer operator.
 Before that, it fetches all the included files that are declared to be fetched in, and reinterprets them as well.
 
-The MakeExe tool reinterprets all the written code, and writes it in an outfile.
+The Pythonizer tool reinterprets all the written code, and writes it in an outfile.
 the two files that you can choose from are a .py program, a .exe or a linux executable, depending on
 where you are runnning this program

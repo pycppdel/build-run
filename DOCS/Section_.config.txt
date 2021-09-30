@@ -17,3 +17,5 @@
     .screenheight                         INT
 
     .engine                               --[As found in Engines.txt]--
+
+    .fps                                  declares the preferred fps
