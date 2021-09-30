@@ -1,0 +1,37 @@
+
+
+
+  -------------------------------------
+  |             .include              |
+  -------------------------------------
+
+  Inside this section you can declare the libraries and the code you want to import.
+
+
+
+  Syntax:  .include "NAME"
+
+  The options for NAME are:
+
+    "PATH_TO_FILE" : includes a file written by you that changes configuration or data or code in your Project
+
+    <Save>         : includes code for saving specific data of the player
+    <Time>         : includes time library for time specific functions
+    <Music>        : includes a library for palying music
+    <Fullscreen>   : includes a library for displaying in Fullscreen and Fullscreen settings
+    <Algorithms>   : includes algorithms for the player to use. z.B. collision detection
+
+
+      Including own files:
+
+      There are different files you can include in your Project
+
+
+      configuration files: These are files that give a standarized version of the config files.
+      The first line of your file must contain:  <.CONFIG>
+
+      data files: These files declare different objects and their attributes.
+      The first line of your file must contain:  <.DATA>
+
+      code files: These files declare functions or classes that can be used in your main .code Section of your codefile
+      The first line of your file must contain:  <.CODE>

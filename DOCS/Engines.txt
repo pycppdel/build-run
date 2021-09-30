@@ -3,5 +3,3 @@ The simplest being an empty-screen, in which you can blit text or images.
 
 By declaring another style, you also declare using an engine pre-built for the
 explicit type.
-
-g
