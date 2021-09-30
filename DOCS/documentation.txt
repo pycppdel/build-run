@@ -74,11 +74,6 @@ Construction of the Project:
 Build&run
 |
 |
-|
-|-Engine
-| |
-| |xxx
-|
 |-Compiler
 | |
 | |xxx
@@ -88,3 +83,20 @@ Build&run
 | |-xxx
 |
 |xxx
+
+
+Starting a Project:
+
+You can start a Project simply by opening a text editor and writing the appropriate Syntax of Plain
+and saving it. After that comes the Compilation Process.
+
+First, the compiler checks the file for any spelling errors and generates an AST.
+
+
+It redeclares definitions and reinterprets them in program code, which will be stored in a dictionary of all needed Data,
+that will be passed to the MakeExe operator.
+Before that, it fetches all the included files that are declared to be fetched in, and reinterprets them as well.
+
+The MakeExe tool reinterprets all the written code, and writes it in an outfile.
+the two files that you can choose from are a .py program, a .exe or a linux executable, depending on
+where you are runnning this program
