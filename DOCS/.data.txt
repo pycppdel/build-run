@@ -21,6 +21,9 @@
       float   : float
       double  : double
       string  : string
+      class   : A class
+
+      (All can be used to indicate return value in front of a function)
 
       Image             : An Image to be displayed on screen
       Object            : Base class for all Objects. Used for collision detection.
@@ -31,4 +34,3 @@
       Player            : can only be declared once. The main player
 
       Enemy             : Base class for all enemys
-      
