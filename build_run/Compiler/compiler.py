@@ -17,12 +17,15 @@ class Compiler:
     Main class for compiling the file
     """
 
-    def __init__(self, filepath):
+    def __init__(self, filepath, searchpaths=[]):
         #gets the filepath for the file to compile.
         #compiler only maps includes of other files onto the dictionary.
         #if any of the pathes couldn't be fined the pythonizer will deal with it.
 
         self.filepath = filepath
+
+        #the folder for search paths
+        self.searchpaths = searchpaths
 
 
     def compile(self):
@@ -64,8 +67,17 @@ class Compiler:
             #Sections are not properly set
             raise SectionsNotProperlySet(self.filepath)
 
+        print(self.include_section_line_length)
+        print(self.config_section_line_length)
+        print(self.data_section_line_length)
+        print(self.code_section_line_length)
+
+
+        #including other files if declared in .include
+
         #finally: closing file
         self.file.close()
+
 
     def sectioncheck(self):
         """
@@ -136,16 +148,39 @@ class Compiler:
 
             linecounter += 1
 
-        #all lines have beend located
+        #all lines have bee located
+
+        #saving lines
+
+        self.include_section_line_length = (self.config_line-self.include_line-1 if self.include_line else None)
+
+        #.config length
+        if self.data_line:
+
+            self.config_section_line_length = (self.data_line-self.config_line-1)
+            self.data_section_line_length = (self.code_line-self.data_line-1)
+
+        else:
+
+            self.config_section_line_length = (self.code_line-self.config_line-1)
+            self.data_section_line_length = None
+
+        #code length
+        self.code_section_line_length = (linecounter-self.code_line-1)
 
         #starting validation
 
+        """
+        what will be given back: -> bool requirements_met
+        """
+        requirements_met = True
+
+        """
+        NEEDED: .config and .code segment
+        """
 
         missing_section = (self.config_line is None or self.code_line is None)
 
-        if missing_section:
-            #section is missing
-            return False
 
         #checks if the sections are in invalid order
         invalid_order = (self.code_line < self.config_line)
@@ -161,12 +196,39 @@ class Compiler:
         if self.data_line is not None and self.include_line is not None:
             invalid_order = (invalid_order or self.data_line < self.include_line)
 
+
+        """
+
+
+        Immediately stopping if the order is incorrect
+
+
+
+
+        """
+
         if invalid_order:
             return False
 
-        return True
 
 
         """
-        TODO: checking validation for files that were included
+        starting check process for other files
         """
+
+        #no search paths specified
+        search_paths_invalid = False
+
+        requirements_met = (not missing_section)
+
+        return requirements_met
+
+    def include_other_files(self):
+        """
+        searches for other included files and adds their code to the main structure
+        """
+
+        #if the filenames are empty
+
+        #setting .config file or .data or .code
+        pass

@@ -22,3 +22,11 @@
 
     .icon                                 the icon of your game as .png or .jpg
     .titel                                the titel of your game
+
+    if another <.CONFIG> was to be included, you still need a .config section.
+
+    Inside this section there needs to be written:
+
+    "extern config"
+
+    as the only parameter
