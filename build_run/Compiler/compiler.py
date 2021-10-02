@@ -27,6 +27,24 @@ class Compiler:
         #the folder for search paths
         self.searchpaths = searchpaths
 
+        """
+        MOST IMPORTANT:
+
+        rawdata: data for the passed text only
+
+        example:
+
+        {
+
+        '.config' : [//MULTIPLE LINES],
+        '.code'   : [//MULTIPLE LINES],
+        '<.CODE>' : [included lines of code]
+
+        }
+
+        """
+        self.rawdata = {}
+
 
     def compile(self):
 
@@ -67,6 +85,9 @@ class Compiler:
             #Sections are not properly set
             raise SectionsNotProperlySet(self.filepath)
 
+        #need to create the rawdata from the info of lines
+        self.create_rawdata_from_sectioncheck()
+
         if not self.include_other_files():
             #include crashed
             raise IncludeCrash()
@@ -76,6 +97,8 @@ class Compiler:
 
         #finally: closing file
         self.file.close()
+
+        return self.rawdata
 
 
     def sectioncheck(self):
@@ -222,6 +245,22 @@ class Compiler:
 
         return requirements_met
 
+    def create_rawdata_from_sectioncheck(self):
+
+        """
+        starts adding all segments of the code into the rawdata
+        """
+
+        if self.include_line is not None:
+            self.rawdata[".include"] = self.filecode_lines[self.include_line+1: self.include_line+self.include_section_line_length+1]
+
+        if self.data_line is not None:
+            self.rawdata[".data"] = self.filecode_lines[self.data_line+1: self.data_line+self.data_section_line_length+1]
+
+        self.rawdata[".config"] = self.filecode_lines[self.config_line+1: self.config_line+self.config_section_line_length+1]
+        self.rawdata[".code"] = self.filecode_lines[self.code_line+1: self.code_line+self.code_section_line_length+1]
+
+
     def include_other_files(self):
         """
         searches for other included files and adds their code to the main structure
@@ -275,8 +314,10 @@ class Compiler:
         #checking for validty
         for el in paths_to_include:
 
-            self.include_file_header_validity_check(el)
+            #assigning filetype
+            filetype = self.include_file_header_validity_check(el)
 
+            #copying into code
 
         return True
 
@@ -306,20 +347,71 @@ class Compiler:
         #boolean for line with header
         had_header = False
 
+        #line where header was found
+        header_line_number = 0
+
+        #counter for line
+        current_line = 0
+
+        #code for the file
+        plaintext = {}
+
         #taking peak until line
         with open(name, "r") as f:
 
             #checking for line
             for line in f.readlines():
 
+                current_line += 1
+
                 if not line:
                     continue
 
                 else:
-
-
-
                     #line has content
                     for check in checks:
 
-                        if re.search(check, line):
+                        found = re.search(check, line)
+
+                        if found:
+                            #found
+                            had_header = True
+                            return_type = found.groups()[0]
+                            header_line_number = current_line
+                            break
+
+                    #line had content that was not the header -> invalid
+                    if not had_header:
+
+                        raise InvalidHeader(name)
+
+                break
+
+            #seeking back for code
+            f.seek(0)
+
+            #resetting current line
+            current_line = 0
+
+            #initilizing the plaintext dict
+            plaintext[return_type] = []
+
+
+            #adding all lines of code
+            for line in f.readlines():
+
+                current_line += 1
+
+                if current_line <= header_line_number:
+                    #no data yet
+                    continue
+                else:
+
+                    #adding to data
+                    line = line.strip()
+                    plaintext[return_type].append(line)
+
+        #finally: adding code to rawdata
+        self.rawdata[return_type] = plaintext[return_type]
+
+        return return_type

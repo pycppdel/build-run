@@ -15,4 +15,4 @@ from Compiler.compiler import Compiler
 
 filename = sys.argv[1]
 
-Compiler(filename, ["/home/paul/Projects/build-run/"]).compile()
+print(Compiler(filename, ["/home/paul/Projects/build-run/"]).compile())
