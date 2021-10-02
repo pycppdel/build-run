@@ -20,6 +20,7 @@
     <Music>        : includes a library for palying music
     <Fullscreen>   : includes a library for displaying in Fullscreen and Fullscreen settings
     <Algorithms>   : includes algorithms for the player to use. z.B. collision detection
+    <Math>         : includes functions for mathemaical operations
 
 
       Including own files:

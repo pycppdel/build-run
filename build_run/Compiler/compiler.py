@@ -23,6 +23,7 @@ class Compiler:
         "<Music>",
         "<Fullscreen>",
         "<Algorithms>",
+        "<Math>",
     ]
 
     """
@@ -51,6 +52,9 @@ class Compiler:
         '.config' : [//MULTIPLE LINES],
         '.code'   : [//MULTIPLE LINES],
         '<.CODE>' : [included lines of code]
+        '<.DATA>' : [included data]
+        '<.CONFIG>': [included configuration file]
+        '<.LIBRARY>': [included libraries]
 
         }
 
@@ -278,7 +282,7 @@ class Compiler:
         self.rawdata["<.CODE>"] = []
         self.rawdata["<.DATA>"] = []
         self.rawdata["<.CONFIG>"] = []
-        self.rawdata["<.LIBRARY>"] = []
+        self.rawdata["<LIBRARY>"] = []
 
     def include_other_files(self):
         """

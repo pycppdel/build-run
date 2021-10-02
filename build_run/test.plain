@@ -1,12 +1,10 @@
 
 
-
 .include
 
+<include> <Math>
+<include> extern_code.plain
 
 .config
-
-
-
 
 .code
