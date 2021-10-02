@@ -278,7 +278,7 @@ class Compiler:
         self.rawdata["<.CODE>"] = []
         self.rawdata["<.DATA>"] = []
         self.rawdata["<.CONFIG>"] = []
-        self.rawdata["<LIBRARY>"] = []
+        self.rawdata["<.LIBRARY>"] = []
 
     def include_other_files(self):
         """
