@@ -4,6 +4,7 @@
 
 <include> "abc.plain"
 <include> "t.plain"
+<include> abc
 
 
 .config
