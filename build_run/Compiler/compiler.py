@@ -260,6 +260,10 @@ class Compiler:
         self.rawdata[".config"] = self.filecode_lines[self.config_line+1: self.config_line+self.config_section_line_length+1]
         self.rawdata[".code"] = self.filecode_lines[self.code_line+1: self.code_line+self.code_section_line_length+1]
 
+        self.rawdata["<.CODE>"] = []
+        self.rawdata["<.DATA>"] = []
+        self.rawdata["<.CONFIG>"] = []
+
 
     def include_other_files(self):
         """
@@ -314,8 +318,9 @@ class Compiler:
         #checking for validty
         for el in paths_to_include:
 
+
             #assigning filetype
-            filetype = self.include_file_header_validity_check(el)
+            self.include_file_header_validity_check(el)
 
             #copying into code
 
@@ -358,16 +363,13 @@ class Compiler:
 
         #taking peak until line
         with open(name, "r") as f:
+            f.seek(0)
 
             #checking for line
             for line in f.readlines():
 
                 current_line += 1
-
-                if not line:
-                    continue
-
-                else:
+                if line.strip():
                     #line has content
                     for check in checks:
 
@@ -406,12 +408,12 @@ class Compiler:
                     #no data yet
                     continue
                 else:
-
                     #adding to data
                     line = line.strip()
                     plaintext[return_type].append(line)
-
         #finally: adding code to rawdata
-        self.rawdata[return_type] = plaintext[return_type]
-
+        try:
+            self.rawdata[return_type].extend(plaintext[return_type])
+        except:
+            raise InvalidHeader(name)
         return return_type

@@ -3,6 +3,8 @@
 .include
 
 <include> "abc.plain"
+<include> "t.plain"
+
 
 .config
 

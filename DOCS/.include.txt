@@ -35,3 +35,5 @@
 
       code files: These files declare functions or classes that can be used in your main .code Section of your codefile
       The first line of your file must contain:  <.CODE>
+
+      INCLUDED HEADERS MUST ALWAYS BE THE FIRST LINE OF THE INCLUDED FILE!
