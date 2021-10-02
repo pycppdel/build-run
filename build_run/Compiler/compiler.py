@@ -7,7 +7,7 @@ import os
 import sys
 #getting exceptions
 from Compiler.exceptions import (PathNotFoundError, IsNoPlainFile,\
-SectionsNotProperlySet)
+SectionsNotProperlySet, IncludeCrash, InvalidHeader)
 
 import re
 
@@ -67,10 +67,9 @@ class Compiler:
             #Sections are not properly set
             raise SectionsNotProperlySet(self.filepath)
 
-        print(self.include_section_line_length)
-        print(self.config_section_line_length)
-        print(self.data_section_line_length)
-        print(self.code_section_line_length)
+        if not self.include_other_files():
+            #include crashed
+            raise IncludeCrash()
 
 
         #including other files if declared in .include
@@ -228,7 +227,99 @@ class Compiler:
         searches for other included files and adds their code to the main structure
         """
 
-        #if the filenames are empty
+        #checking if something even was to be included
 
-        #setting .config file or .data or .code
-        pass
+        includelines = self.filecode_lines[self.include_line+1:self.include_line+self.include_section_line_length+1]
+
+        #generating datastring for include to fish out the filenames
+        include_regex = r'\s*<include>\s*\"?([a-zA-Z0-9\._-]+)\"?\s*'
+
+        #saving the paths to include
+        paths_to_include = []
+
+        #starting search
+        for line in includelines:
+            #dropping empty lines
+            if not line:
+                #back to next line
+                continue
+
+            #getting the declared filename
+            filename = re.search(include_regex, line).groups()[0]
+
+            #checking for existance
+            if os.path.exists(filename):
+
+                #exists
+                paths_to_include.append(filename)
+                continue
+            else:
+                #checking individually
+
+                external_found = False
+                for el in self.searchpaths:
+
+
+                    if os.path.exists(el+filename):
+                        #exists
+                        paths_to_include.append(el+filename)
+                        external_found = True
+
+                if not external_found:
+                    raise FileNotFoundError("Wrong include!")
+
+        """
+        included paths are now ready to be juiced out for code
+        """
+
+        #checking for validty
+        for el in paths_to_include:
+
+            self.include_file_header_validity_check(el)
+
+
+        return True
+
+
+    def include_file_header_validity_check(self, name):
+        """
+        checks for the specified file if it contains the right import header and gives back type of file.
+
+        types are: '<.CONFIG>', '<.DATA>', '<.CODE>'
+        """
+
+        #header regexes
+        config_header_regex = r"\s*(<\.CONFIG>)\s*"
+        data_header_regex = r"\s*(<\.DATA>)\s*"
+        code_header_regex = r"\s*(<\.CODE>)\s*"
+
+        checks = [
+
+        config_header_regex,
+        data_header_regex,
+        code_header_regex,
+
+        ]
+
+        return_type = ""
+
+        #boolean for line with header
+        had_header = False
+
+        #taking peak until line
+        with open(name, "r") as f:
+
+            #checking for line
+            for line in f.readlines():
+
+                if not line:
+                    continue
+
+                else:
+
+
+
+                    #line has content
+                    for check in checks:
+
+                        if re.search(check, line):

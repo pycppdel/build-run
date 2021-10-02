@@ -2,6 +2,8 @@
 
 .include
 
+<include> "abc.plain"
+
 .config
 
 

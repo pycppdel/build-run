@@ -39,3 +39,24 @@ class SectionsNotProperlySet(Exception):
     def __str__(self):
         #returns the error message
         return ("The Path "+self.path+" contains a invalid Section structure.")
+
+class IncludeCrash(Exception):
+
+    """
+    Exception for when the include crashed
+    """
+    def __str__(self):
+
+        return "The include crashed"
+
+class InvalidHeader(Exception):
+
+    """
+    exception for when an included file as a wrong header
+    """
+
+    def __init__(self,filename):
+        self.filename = filename
+
+    def __str__(self):
+        return self.filename+" has an invalid header. Valid headers are: <.CONFIG>, <.DATA>, <.CODE>"

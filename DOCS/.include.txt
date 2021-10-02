@@ -9,7 +9,7 @@
 
 
 
-  Syntax:  include "NAME"
+  Syntax:  <include> "NAME"
 
   The options for NAME are:
 
