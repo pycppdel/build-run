@@ -24,6 +24,7 @@ class Compiler:
         "<Fullscreen>",
         "<Algorithms>",
         "<Math>",
+        "<Draw>",
     ]
 
     """
@@ -282,7 +283,7 @@ class Compiler:
         self.rawdata["<.CODE>"] = []
         self.rawdata["<.DATA>"] = []
         self.rawdata["<.CONFIG>"] = []
-        self.rawdata["<LIBRARY>"] = []
+        self.rawdata["<.LIBRARY>"] = []
 
     def include_other_files(self):
         """
@@ -316,7 +317,7 @@ class Compiler:
             if filename in Compiler.standard_includes:
 
                 #adding file to added ones
-                self.rawdata["<LIBRARY>"].append(filename)
+                self.rawdata["<.LIBRARY>"].append(filename)
 
                 #including and conntinuing
                 continue

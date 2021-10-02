@@ -8,3 +8,14 @@
 .config
 
 .code
+
+class A{
+
+init A(){
+
+print(Hallo);
+}
+
+
+
+}
