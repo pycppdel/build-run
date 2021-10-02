@@ -4,3 +4,10 @@ Main file that invokes the transformation Process from .plain to
 
 
 """
+
+#for argv checking
+import sys
+
+
+#loading all modules needed for compilation
+from Compiler.compiler import Compiler

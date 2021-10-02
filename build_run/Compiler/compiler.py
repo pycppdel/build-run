@@ -6,7 +6,7 @@ Pythonizer Class.
 import os
 import sys
 #getting exceptions
-from exceptions import (PathNotFoundError, IsNoPlainFile,\
+from Compiler.exceptions import (PathNotFoundError, IsNoPlainFile,\
 SectionsNotProperlySet)
 
 import re
@@ -170,9 +170,3 @@ class Compiler:
         """
         TODO: checking validation for files that were included
         """
-
-
-
-
-
-Compiler(sys.argv[1]).compile()
