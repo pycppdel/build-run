@@ -14,6 +14,18 @@ import re
 class Compiler:
 
     """
+    standard includes are all library includes
+    """
+    standard_includes = [
+
+        "<Save>",
+        "<Time>",
+        "<Music>",
+        "<Fullscreen>",
+        "<Algorithms>",
+    ]
+
+    """
     Main class for compiling the file
     """
 
@@ -88,15 +100,18 @@ class Compiler:
         #need to create the rawdata from the info of lines
         self.create_rawdata_from_sectioncheck()
 
-        if not self.include_other_files():
-            #include crashed
-            raise IncludeCrash()
+        if self.include_line is not None:
+
+            if not self.include_other_files():
+                #include crashed
+                raise IncludeCrash()
 
 
         #including other files if declared in .include
 
         #finally: closing file
         self.file.close()
+
 
         return self.rawdata
 
@@ -263,7 +278,7 @@ class Compiler:
         self.rawdata["<.CODE>"] = []
         self.rawdata["<.DATA>"] = []
         self.rawdata["<.CONFIG>"] = []
-
+        self.rawdata["<LIBRARY>"] = []
 
     def include_other_files(self):
         """
@@ -275,7 +290,7 @@ class Compiler:
         includelines = self.filecode_lines[self.include_line+1:self.include_line+self.include_section_line_length+1]
 
         #generating datastring for include to fish out the filenames
-        include_regex = r'\s*<include>\s*\"?([a-zA-Z0-9\._-]+)\"?\s*'
+        include_regex = r'\s*<include>\s*\"?(<?[a-zA-Z0-9\._-]+>?)\"?\s*'
 
         #saving the paths to include
         paths_to_include = []
@@ -289,6 +304,18 @@ class Compiler:
 
             #getting the declared filename
             filename = re.search(include_regex, line).groups()[0]
+
+            print(filename)
+
+            #checking if it was a link to a standard library
+
+            if filename in Compiler.standard_includes:
+
+                #adding file to added ones
+                self.rawdata["<LIBRARY>"].append(filename)
+
+                #including and conntinuing
+                continue
 
             #checking for existance
             if os.path.exists(filename):
@@ -317,7 +344,6 @@ class Compiler:
 
         #checking for validty
         for el in paths_to_include:
-
 
             #assigning filetype
             self.include_file_header_validity_check(el)
@@ -361,9 +387,11 @@ class Compiler:
         #code for the file
         plaintext = {}
 
+
         #taking peak until line
         with open(name, "r") as f:
             f.seek(0)
+
 
             #checking for line
             for line in f.readlines():

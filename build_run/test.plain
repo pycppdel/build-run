@@ -1,15 +1,12 @@
 
 
-.include
 
-<include> "abc.plain"
-<include> "t.plain"
-<include> abc
+.include
 
 
 .config
 
 
-.data
+
 
 .code
