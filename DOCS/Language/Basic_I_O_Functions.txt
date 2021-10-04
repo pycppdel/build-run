@@ -13,17 +13,91 @@ DrawPixel(int x_position, in y_position, colors<enum>/int[] color=BLACK/{R, G, B
 DrawPixel(Point p, colors<enum>/int[] color=BLACK/{R, G, B})                                                        : sets a pixel on the screen
 DrawLine(int x_position, int y_position, int x_position2, int y_position2, colors<enum>/int[] color=BLACK/{R, G, B}): draws a line from x, y to x2, y2
 DrawLine(Point p1, Point p2, colors<enum>/int[] color=BLACK/{R, G, B})                                              : draws a line from point one to point two
-DrawRect(int x, int y, nt with, int height, )
-DrawRect()
-DrawCircle()
-DrawArc()
-UIrefresh()                                                                                        : refreshes the screen and clears it. All operations must be called again to draw on it
+DrawRect(int x, int y, nt width, int height, colors<enum>/int[] color=BLACK/{R, G, B}, bool filled=true)            : draws the rect rect from x, y down
+DrawRect(Point p, int width, int height, colors<enum>/int[] color=BLACK/{R, G, B}, bool filled=true)                : draws the rect rect from the point p down
+DrawRect(Rect r, colors<enum>/int[] color=BLACK/{R, G, B}, bool filled=true)                                        : creates the rectangle from object rect
+DrawCircle(int x, int y, int radius, color=BLACK/{R, G, B}, bool filled=true)                                       : draws a circle with middle point x, y and radius radius
+DrawCircle(Point p, int radius, color=BLACK/{R, G, B}, bool filled=true)                                            : draws a circle with middle point p and radius radius
+DrawCircle(Circle c, color=BLACK/{R, G, B}, bool filled=true)                                                       : Draws a simple circle object
+DrawArc()  //implemented later
+DrawArc()  // implemented later
+UIrefresh()                                                                                                         : refreshes the screen and clears it. All operations must be called again to draw on it
 
 
 Basic I/O Objects:
+--------------------
 
-Point()
-Image()
+Object -> MoveAbleIUIObject -> ...
+
+
+Object
+--------------
+--Attributes--
+--------------
+
+int x, int y
+int width, int height #automatically -1 if not needed
+
+--------------
+----Methods---
+--------------
+
+bool is_colliding(Object other)
+
+
+
+MoveableUIObject inherits Object
+
+--------------
+--Attributes--
+--------------
+
+bool screen_boundary_detection
+
+--------------
+----Methods---
+--------------
+bool move_left(int pixels)
+bool move_right(int pixels)
+bool move_up(int pixels)
+bool move_down(int pixels)
+void setx(int x)
+void sety(int y)
+
+void set_screen_boundary_detection(bool mode)
+
+
+Point inherits MoveAbleIUIObject
+
+--------------
+--Attributes--
+--------------
+
+--------------
+----Methods---
+--------------
+Point(int x, int y)
+
+#only a point, what to expect...
+
+
+Image inherits MoveableUIObject
+
+--------------
+--Attributes--
+--------------
+
+string path
+
+--------------
+----Methods---
+--------------
+Image(string path_to_file)
+void draw()
+
+
+
+Text()
 Rect()
 Circle()
 Arc()
