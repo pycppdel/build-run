@@ -9,6 +9,7 @@ coding inside the .data and .code section
 What needs to be described:
 
 - Basic Data Types
+- Basic I/O Functions on the UI
 - Operations between data types
 - Control Structures
 - Functions, Methods & Attributes

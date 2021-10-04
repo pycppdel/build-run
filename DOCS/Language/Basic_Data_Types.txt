@@ -4,18 +4,65 @@
 
     Available Basic Data Types:
 
-    int             : Basic type for numbers
-    float           : Basic type for floating point numbers
-    string          : basic string
-    Object          : Superclass for all class instances. Doesn't need to be declared
-    FunctionObject  : Superclass for all functions
+    int             : Basic type for numbers                                              : 1, 2, -34, 3489
+    float           : Basic type for floating point numbers                               : 1.7, -8.9, 33.0
+    string          : basic string                                                        : "Hallo", "Welt"
+    enum            : you can declare your own enums, however,
+                    : enums are mainly used inside the .plain structure                   : NAME, DAY,
+                    : you can specify if the enum should be visible globally or
+                    : locally by calling .globalize() or .localize() on the instance.
+                    : default is local
+    bool            : boolean, true or false
+
+
+    Object          : Superclass for all class instances. Doesn't need to be declared     : class x, class y
+    FunctionObject  : Superclass for all functions                                        : function x, function y
 
     XXX[]           : List for data type XXX
 
 
-    How to create a variable:
+    How to create a variable in python as well as in CPP mode:
 
-    XXX #NAME = #VALUE;
+    #NAME = #VALUE;
 
     now the value #VALUE is stored inside the #NAME variable.
-    XXX identifies the type
+
+    If you're only running in python mode
+
+    ---------NO POINTERS ARE ALLOWED EVEN WITH THE CPP PROGRAMMER INTERFACE----------
+
+    Normally declaring variables and configuring their data will be done in .data,
+    while in .code the variables interact with eachother and create the program flow with operations.
+
+    Example .data section:
+
+
+
+    .data
+
+    name_of_the_player = "playername";
+    Player = new Player();  # -> as example for Object, Player is a standard class
+    age = 22;
+
+    function add(a, b){     # -> declaring a function
+
+    return a+b;
+    };
+
+    #making an enum
+
+    weekdays<enum> = {MONDAY, TUESDAY, usw..};
+    #globalising the enum
+    weekdays.globalize();
+
+    #making a list of ints
+
+    intlist[] = {1, 2, 3, 4};
+
+    #unlike in c notation the lists space is not limited
+
+    add_reference = add;    #also possible: referencing the same function with another variable
+
+    .code
+
+    #code starts
