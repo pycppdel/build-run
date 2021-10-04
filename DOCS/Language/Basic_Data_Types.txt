@@ -11,4 +11,11 @@
     FunctionObject  : Superclass for all functions
 
     XXX[]           : List for data type XXX
-    
+
+
+    How to create a variable:
+
+    XXX #NAME = #VALUE;
+
+    now the value #VALUE is stored inside the #NAME variable.
+    XXX identifies the type
