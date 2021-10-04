@@ -1,0 +1,14 @@
+
+
+    ---Inside this file the Basic data types will be described---
+
+    Available Basic Data Types:
+
+    int             : Basic type for numbers
+    float           : Basic type for floating point numbers
+    string          : basic string
+    Object          : Superclass for all class instances. Doesn't need to be declared
+    FunctionObject  : Superclass for all functions
+
+    XXX[]           : List for data type XXX
+    

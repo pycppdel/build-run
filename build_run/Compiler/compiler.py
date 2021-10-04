@@ -21,7 +21,7 @@ class Compiler:
         "<Save>",
         "<Time>",
         "<Music>",
-        "<Fullscreen>",
+        "<Display>",
         "<Algorithms>",
         "<Math>",
         "<Draw>",
@@ -55,7 +55,7 @@ class Compiler:
         '<.CODE>' : [included lines of code]
         '<.DATA>' : [included data]
         '<.CONFIG>': [included configuration file]
-        '<.LIBRARY>': [included libraries]
+        '<.LIBRARY>': [included libraries
 
         }
 

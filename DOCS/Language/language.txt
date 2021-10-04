@@ -1,0 +1,25 @@
+
+
+-------Inside this file the layout of the language will be described-------
+
+After writing your Sections and the configuration, the main part starts with
+coding inside the .data and .code section
+
+
+What needs to be described:
+
+- Basic Data Types
+- Operations between data types
+- Control Structures
+- Functions, Methods & Attributes
+- Classes
+- Iterator Classes
+
+//Library
+<Save>
+<Time>
+<Music>
+<Display>
+<Algorithms>
+<Math>
+<Draw>

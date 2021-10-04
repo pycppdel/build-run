@@ -18,7 +18,7 @@
     <Save>         : includes code for saving specific data of the player
     <Time>         : includes time library for time specific functions
     <Music>        : includes a library for palying music
-    <Fullscreen>   : includes a library for displaying in Fullscreen and Fullscreen settings
+    <Display>      : includes operations for the display like fullscreen, setting icons usw.
     <Algorithms>   : includes algorithms for the player to use. z.B. collision detection
     <Math>         : includes functions for mathemaical operations
     <Draw>         : for drawing arcs or linespycppdel
