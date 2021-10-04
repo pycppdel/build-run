@@ -21,7 +21,8 @@
     <Fullscreen>   : includes a library for displaying in Fullscreen and Fullscreen settings
     <Algorithms>   : includes algorithms for the player to use. z.B. collision detection
     <Math>         : includes functions for mathemaical operations
-    <Draw>         : for drawing arcs or lines
+    <Draw>         : for drawing arcs or linespycppdel
+
 
 
       Including own files:
