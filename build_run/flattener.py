@@ -16,4 +16,4 @@ from Compiler.pythonizer import Pythonizer
 
 filename = sys.argv[1]
 
-print(Pythonizer({}, "h.py").compile_to_py())
+print(Pythonizer({}, "h.py").compile_to_exe())

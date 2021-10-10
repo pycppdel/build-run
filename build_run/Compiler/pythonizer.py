@@ -4,6 +4,7 @@ File with a class that generates python code from given Dictionary of Data.
 Loads Libraries automatically
 """
 import sys
+import os
 
 
 class Pythonizer:
@@ -67,3 +68,11 @@ class Pythonizer:
 
 
             sys.stdout = sys.__stdout__
+
+    def compile_to_exe(self):
+        """
+        needs to be called after compiling to an py file
+        """
+        #quicksaving
+        current_path = os.getcwd()
+        print(os.path.dirname(self.pyname))
