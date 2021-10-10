@@ -5,7 +5,11 @@ Loads Libraries automatically
 """
 import sys
 import os
+import platform
+from Compiler.system_ import SYSTEM
 
+SYSTEM.setSYSTEM()
+syscalls = SYSTEM.getSYSTEMcalls()
 
 class Pythonizer:
 
@@ -20,7 +24,7 @@ class Pythonizer:
         """
 
         self.code = code
-        self.pyname = pyname #file of the outgoing py file
+        self.pyname = pyname+".py" #file of the outgoing py file
         self.exename = exename
 
     def compile_to_py(self):
@@ -69,10 +73,31 @@ class Pythonizer:
 
             sys.stdout = sys.__stdout__
 
+        return True
+
     def compile_to_exe(self):
         """
         needs to be called after compiling to an py file
         """
         #quicksaving
         current_path = os.getcwd()
-        print(os.path.dirname(self.pyname))
+        #getting directory
+        dirname = os.path.dirname(self.pyname)
+        if dirname:
+            os.chdir(dirname)
+        #making exe
+
+        try:
+
+            os.system("python3 -m PyInstaller --onefile "+os.path.basename(self.pyname))
+            os.chdir("dist")
+            os.system(syscalls["copy"]+" "+os.path.basename(self.pyname.split(".py")[0])+" .."+syscalls["divsign"])
+        except:
+
+            os.chdir(current_path)
+
+            return False
+
+        os.chdir(current_path)
+
+        return True

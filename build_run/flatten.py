@@ -15,5 +15,10 @@ from Compiler.pythonizer import Pythonizer
 
 
 filename = sys.argv[1]
+if not filename:
 
-print(Pythonizer({}, "h.py").compile_to_exe())
+    raise FileNotFoundError("no input")
+
+p = Pythonizer({}, sys.argv[1])
+p.compile_to_py()
+p.compile_to_exe()
