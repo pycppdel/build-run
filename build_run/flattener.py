@@ -11,8 +11,9 @@ import sys
 
 #loading all modules needed for compilation
 from Compiler.compiler import Compiler
+from Compiler.pythonizer import Pythonizer
 
 
 filename = sys.argv[1]
 
-print(Compiler(filename, ["/home/paul/Projects/build-run/"]).compile())
+print(Pythonizer({}, "h.py").compile_to_py())
