@@ -43,6 +43,7 @@ class SYSTEM:
     def getSYSTEMcalls():
 
         if not SYSTEM.SYSTEM:
+            #uninitialized
 
             return {}
         else:

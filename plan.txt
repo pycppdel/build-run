@@ -1,6 +1,6 @@
 
 
--building basic compiler file
+-building basic compiler file |æ|
 -formulating the language
 -finding a way to implement the language in code
 -building tokenizer

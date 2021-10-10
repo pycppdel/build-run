@@ -11,6 +11,8 @@ import sys
 
 #loading all modules needed for compilation
 from Compiler.compiler import Compiler
+from Compiler.tokenizer import Tokenizer
+from Compiler.lexer import Lexer
 from Compiler.pythonizer import Pythonizer
 
 
