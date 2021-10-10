@@ -1,0 +1,12 @@
+
+
+-building basic compiler file
+-formulating the language
+-finding a way to implement the language in code
+-building tokenizer
+-building translator
+-adding basic stuff
+-adding libraries
+-making dependecies file
+-making installer
+-releasing
