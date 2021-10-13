@@ -60,3 +60,9 @@ class InvalidHeader(Exception):
 
     def __str__(self):
         return self.filename+" has an invalid header. Valid headers are: <.CONFIG>, <.DATA>, <.CODE>"
+
+class ConfigInstructionNotFound(Exception):
+
+    def __str__(self):
+
+        return "The instruction you declared in .config was not valid"

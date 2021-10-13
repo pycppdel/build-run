@@ -25,7 +25,8 @@ class Pythonizer:
         """
 
         self.code = code
-        self.pyname = pyname+".py" #file of the outgoing py file
+        self.pyname = pyname.split(".plain")[0]
+        self.pyname += ".py"
         self.exename = exename
 
     def compile_to_py(self):
@@ -55,8 +56,24 @@ class Pythonizer:
             print()
             print('clock = pygame.time.Clock()')
             print()
+
+            """
+            for all instructions before loop from code
+            """
+
+            for el in self.code["beforeLoop"]:
+
+                print(el)
+
             print('def redraw():')
             print('    screen.fill((255, 255, 255))')
+            """
+            for all instructions between draw from code
+            """
+
+            for el in self.code["insideDraw"]:
+
+                print("    "+el)
             print('    pygame.display.flip()')
             print()
             print('while not ende:')
@@ -66,9 +83,23 @@ class Pythonizer:
             print('    for event in pygame.event.get():')
             print('        if event.type == pygame.QUIT:')
             print('            ende = True')
+            """
+            for all instructions inside loop loop from code
+            """
+
+            for el in self.code["insideLoop"]:
+
+                print("    "+el)
             print()
             print('    redraw()')
             print()
+            """
+            for all instructions aftere loop from code
+            """
+
+            for el in self.code["afterLoop"]:
+
+                print(el)
             print('pygame.quit()')
 
 
