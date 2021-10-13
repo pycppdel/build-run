@@ -121,7 +121,7 @@ class Pythonizer:
 
         try:
 
-            os.system("pyinstaller "+os.path.basename(self.pyname))
+            os.system("pyinstaller --onefile "+os.path.basename(self.pyname))
             os.chdir("dist")
             os.system(syscalls["copy"]+" "+os.path.basename(self.pyname.split(".py")[0])+" .."+syscalls["divsign"])
         except:
