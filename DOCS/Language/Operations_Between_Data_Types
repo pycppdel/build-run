@@ -9,4 +9,12 @@ Operations:
 int:    +, -, *, /, **, %, <<, >>, |, &, ~, !=, ==, <, >; <=, >=
 float:  +, -, *, /, **, %, <<, >>, |, &, ~, !=, ==, <, >; <=, >=
 string: +, compare(other), !=, ==, <, >; <=, >=
-list[]: [], copy(von, bis),
+list[]: [], copy(von, bis), length(), sublist(von, bis, schritt), insert(pos, el), remove(pos, el)
+
+string: length(), substring(von,bis, schritt), copy(), [], replace(s, other), +, +=,
+enum:
+
+bool:  !, &&, ||
+
+Object: name(), attributes(), functions(), doc(), issubclass(a, von),  
+FunctionObject: name(), returnValue(), doc()

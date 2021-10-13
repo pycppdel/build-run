@@ -1,0 +1,19 @@
+-------------
+| Functions |
+-------------
+
+every defined function is subclass of FunctionObject, therefore
+has the Attributes name and returnValue and doc.
+
+declaring a function:
+
+function NAME(val1, val2){
+
+//do something
+
+return XXX;
+
+}
+
+Methods of classes are the same, but need to declared inside the class.
+They can be called with own attributes

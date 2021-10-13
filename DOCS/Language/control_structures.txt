@@ -1,0 +1,51 @@
+
+
+--------------------
+|Control Structures|
+--------------------
+
+There are 4 control Structures:
+
+if (bool){
+
+}
+
+else if(bool){
+
+}
+
+else if()
+.
+.
+.
+else{
+
+}
+--------------------------
+
+for(init, bedingung, step);
+for(element: liste);
+
+--------------------------
+
+while(bool){
+
+}
+
+--------------------------
+
+do{
+
+}
+
+while(bool);
+
+--------------------------
+
+switch(element){
+
+case A:
+
+break;
+...
+}

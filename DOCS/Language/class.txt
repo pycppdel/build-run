@@ -1,0 +1,38 @@
+
+-------------
+|   Class   |
+-------------
+
+Class is subclass of global class Object, therefore has all of the according functions.
+
+
+
+
+Declaring a class:
+
+class NAME (inherits ...){ // optional
+
+init NAME(){
+
+}
+
+deinit NAME(){
+
+
+
+}
+
+function NAME2(d, f){
+
+}
+
+
+
+
+}
+
+getting superclass methods can be achieved through calling super.
+
+Super is a reference to the Superclass, which is at least almost Object.
+
+calling superclass init:  super.init()
